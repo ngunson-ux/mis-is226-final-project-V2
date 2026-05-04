@@ -86,6 +86,17 @@ $routes->group('api', function($routes) {
     $routes->delete('delivery-partner/(:num)', 'Api\DeliveryPartner::delete/$1');
 
     $routes->get('report/brand/(:num)/sales-performance/', 'Api\SalesPerformanceReport::getIndex/$1');
+
+	// CUSTOMER DEMOGRAPHICS
+	$routes->get('report-customer-demographics', 'ReportCustomerDemographics::index');
+	$routes->get('report-customer-demographics/export-csv', 'ReportCustomerDemographics::exportCsv');
+	$routes->get('report-customer-demographics/export-age-distribution', 'ReportCustomerDemographics::exportAgeDistribution');
+	$routes->get('report-customer-demographics/export-gender-distribution', 'ReportCustomerDemographics::exportGenderDistribution');
+	$routes->get('report-customer-demographics/api', 'ReportCustomerDemographics::api');
+
+
+
+
 });
 
 $routes->get('manage-brand', 'ManageBrand::getIndex');
