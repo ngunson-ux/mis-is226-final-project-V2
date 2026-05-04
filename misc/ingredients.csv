@@ -1,0 +1,105 @@
+ingredient_id,name,brand,description,qty_purchased,qty_remaining,unit_of_measure,category,allergen_flag,created_by
+1,Annatto Oil,NutriSource PH,Natural annatto-infused cooking oil for authentic Filipino coloring,10,1.23,ml,Oils & Fats,FALSE,admin
+2,Apple,Fresh Harvest,"Crisp, farm-fresh apples sourced from Benguet highlands",25,5.64,g,Fresh Fruits,FALSE,admin
+3,Avocado,Green Gold Farms,"Creamy Hass avocados, cold-chain delivered",10,6.31,g,Fresh Fruits,FALSE,admin
+4,BBQ Sauce,SmokeHouse PH,Rich smoky barbecue sauce with a hint of calamansi,10,2.97,ml,Sauces & Condiments,FALSE,admin
+5,Bacon,Prime Cut Meats,"Hickory-smoked streaky bacon, vacuum-sealed",5,3.03,pcs,Pork Products,FALSE,admin
+6,Banana,Dole Philippines,"Sweet Cavendish bananas, ripe-to-order",200,59.68,pcs,Fresh Fruits,FALSE,admin
+7,Bangus,AquaFresh Farms,"Farm-raised milkfish, cleaned and deboned",5,3.91,g,Seafood,TRUE,admin
+8,Batter,GoldenCoat Supply,All-purpose seasoned frying batter mix,200,81.25,g,Dry Mixes,TRUE,admin
+9,Beef,Batangas Beef Co.,Premium grass-fed beef cuts from Batangas,100,19.2,g,Beef Products,FALSE,admin
+10,Beef Patty,GrillMaster PH,"Seasoned 100% ground beef patties, individually frozen",100,86.27,g,Beef Products,FALSE,admin
+11,Beef Steak,Batangas Beef Co.,"Marbled sirloin steak cuts, chilled",5,3.78,g,Beef Products,FALSE,admin
+12,Blueberries,Nordic Berry Import,"Frozen wild blueberries, IQF processed",200,34.18,g,Frozen Fruits,FALSE,admin
+13,Bone Marrow,Prime Cut Meats,"Cross-cut beef bone marrow, frozen",100,61.96,g,Beef Products,FALSE,admin
+14,Bread,Gardenia PH,"Soft white sandwich bread, sliced",5,3.48,slices,Bakery,TRUE,admin
+15,Breading,GoldenCoat Supply,Japanese-style panko breading for crispy coatings,10,8.7,g,Dry Mixes,TRUE,admin
+16,Broth,Knorr Philippines,"Concentrated chicken/beef broth, low-sodium",200,70.04,ml,Stocks & Broths,FALSE,admin
+17,Buffalo Sauce,Frank's RedHot,Classic cayenne pepper-based buffalo wing sauce,20,8.66,g,Sauces & Condiments,FALSE,admin
+18,Bun,La Moderna Bakery,"Soft sesame bun, individually wrapped",50,36.58,pcs,Bakery,TRUE,admin
+19,Burger Bun,La Moderna Bakery,"Premium brioche-style burger bun, lightly toasted",10,6.48,pcs,Bakery,TRUE,admin
+20,Butter,Anchor Dairy NZ,"Unsalted cultured butter, 83% fat content",25,6.18,g,Dairy,TRUE,admin
+21,Cake Base,BakeEase Supply,"Pre-mixed moist sponge cake base, ready-to-bake",25,17.9,g,Dry Mixes,TRUE,admin
+22,Carrot,Benguet Fresh Farms,"Organic baby carrots, washed and trimmed",25,20.99,g,Vegetables,FALSE,admin
+23,Cheese,Magnolia Dairy,Full-fat cheddar cheese block,200,68.19,g,Dairy,TRUE,admin
+24,Cheese Sauce,Arla Foods,Creamy processed cheese sauce for dips and toppings,100,29.14,g,Dairy,TRUE,admin
+25,Cheese Slice,Magnolia Dairy,Individually wrapped processed American cheese slices,500,114.29,pcs,Dairy,TRUE,admin
+26,Chicken,San Miguel Foods,"Fresh chilled chicken cuts, halal-certified",50,38.62,g,Poultry,FALSE,admin
+27,Chicken Fillet,San Miguel Foods,"Boneless skinless chicken breast fillet, IQF",200,85.16,g,Poultry,FALSE,admin
+28,Chicken Patty,GrillMaster PH,"Seasoned ground chicken patty, breaded style",500,90.91,g,Poultry,FALSE,admin
+29,Chicken Wings,San Miguel Foods,"Fresh split chicken wings, chilled",20,13.29,g,Poultry,FALSE,admin
+30,Chili,La Pacita Spices,"Dried red chili flakes, coarse ground",200,127.35,g,Spices & Seasonings,FALSE,admin
+31,Chili Mayo,Heinz Asia,Creamy mayo blend with chili for sandwiches and dips,500,288.1,g,Sauces & Condiments,FALSE,admin
+32,Chili Sauce,Lee Kum Kee,"Sweet chili dipping sauce, Thai-style",10,7.14,g,Sauces & Condiments,FALSE,admin
+33,Chocolate,Malagos Chocolate,Premium Davao dark chocolate couverture,100,20.04,g,Confectionery,TRUE,admin
+34,Cocoa,Malagos Chocolate,100% pure unsweetened cocoa powder,500,51.46,g,Dry Mixes,TRUE,admin
+35,Crab,SeaHarvest PH,"Fresh mud crab, live-delivered or cleaned frozen",20,11.14,g,Seafood,TRUE,admin
+36,Cream,Nestle PH,"All-purpose cooking cream, 35% fat",50,42.88,ml,Dairy,TRUE,admin
+37,Cream Cheese,Arla Foods,Philadelphia-style full-fat cream cheese block,25,5.94,g,Dairy,TRUE,admin
+38,Dough,La Moderna Bakery,"Pre-fermented pizza/bread dough, chilled",5,3.2,g,Bakery,TRUE,admin
+39,Dumpling Wrapper,Wing Yip Asia,"Round gyoza/dumpling wrappers, fresh-chilled",10,9.36,pcs,Asian Ingredients,TRUE,admin
+40,Egg,Monterey Farms,"Large farm-fresh eggs, Grade A",25,3.8,pcs,Eggs & Dairy,TRUE,admin
+41,Egg Yolk,Monterey Farms,Pasteurized separated egg yolks,10,1.77,pcs,Eggs & Dairy,TRUE,admin
+42,Fish,AquaFresh Farms,"Mixed whole fish, cleaned and scaled",20,4.31,g,Seafood,TRUE,admin
+43,Flour,Golden Wheat Mills,"All-purpose wheat flour, bleached",20,6.77,g,Dry Mixes,TRUE,admin
+44,Fresh Fish,AquaFresh Farms,Daily-caught fresh saltwater fish fillets,200,193.59,g,Seafood,TRUE,admin
+45,Fries,McCain Foods PH,"Straight-cut frozen French fries, lightly salted",25,18.54,g,Frozen Goods,FALSE,admin
+46,Garlic,Ilocos Garlic Farms,"Premium native garlic, peeled and ready-to-use",100,49.43,g,Vegetables,FALSE,admin
+47,Ginger,Benguet Fresh Farms,"Fresh ginger root, peeled and sliced",10,3.23,g,Vegetables,FALSE,admin
+48,Graham,Monde Nissin,"Honey graham crackers, crushed or whole",5,3.15,g,Baked Goods,TRUE,admin
+49,Ground Pork,Prime Cut Meats,"Freshly ground pork shoulder, chilled",25,2.66,g,Pork Products,FALSE,admin
+50,Hotdog,Purefoods Star,Classic beef-pork blend frankfurter,5,1.53,pcs,Processed Meats,TRUE,admin
+51,Ice Cream,Selecta PH,"Creamy vanilla ice cream base, bulk tub",100,16.38,g,Frozen Desserts,FALSE,admin
+52,Lettuce,Tagaytay Fresh Farms,"Crisp iceberg lettuce, pre-washed and chilled",500,146.41,g,Vegetables,FALSE,admin
+53,Mango,Guimaras Mango Farms,"Sweet Carabao mangoes, ripened on-tree",500,159.35,g,Fresh Fruits,FALSE,admin
+54,Matcha,Ippodo Tea Japan,"Ceremonial-grade matcha powder, stone-ground",25,4.62,g,Specialty Ingredients,FALSE,admin
+55,Mayo,Best Foods PH,"Classic egg-based mayonnaise, full-fat",100,48.12,g,Sauces & Condiments,FALSE,admin
+56,Meat Sauce,Barilla Italy,Slow-cooked bolognese-style meat sauce,10,1.55,g,Sauces & Condiments,FALSE,admin
+57,Milk,Anchor Dairy NZ,"Full-cream fresh milk, pasteurized and chilled",10,3.24,ml,Dairy,TRUE,admin
+58,Miso,Hikari Miso Japan,"White shiro miso paste, fermented soybean",500,113.08,g,Asian Ingredients,TRUE,admin
+59,Mixed Fruits,Del Monte PH,Canned mixed tropical fruit cocktail in syrup,500,162.41,g,Canned Goods,FALSE,admin
+60,Mushroom,Sagada Fresh Farms,"Button mushrooms, fresh-sliced or whole",500,413.61,g,Vegetables,FALSE,admin
+61,Mustard,French's USA,"Yellow prepared mustard, classic style",10,1.46,g,Sauces & Condiments,FALSE,admin
+62,Noodles,Lucky Me PH,Thick wheat egg noodles for stir-fry and soups,10,9.34,g,Dry Goods,TRUE,admin
+63,Nori,Yamamoto Seaweed,"Roasted nori seaweed sheets, premium grade",20,9.32,pcs,Asian Ingredients,FALSE,admin
+64,Oil,Baguio Gold,"Refined coconut cooking oil, food-grade",200,182.44,ml,Oils & Fats,FALSE,admin
+65,Onion,NovaliCrop Farms,"White onions, peeled and diced",5,4.93,g,Vegetables,FALSE,admin
+66,Oreo,Nabisco/Mondelez,"Classic Oreo sandwich cookies, crushed for desserts",50,24.04,g,Confectionery,TRUE,admin
+67,Parmesan,Grana Padano Italy,"Aged Parmigiano-Reggiano, finely grated",500,119.66,g,Dairy,TRUE,admin
+68,Pasta,Barilla Italy,"Durum wheat semolina pasta, various cuts",5,3.11,g,Dry Goods,TRUE,admin
+69,Pasta Sheets,Barilla Italy,"Flat lasagna pasta sheets, no pre-boil required",100,15.14,g,Dry Goods,TRUE,admin
+70,Peanut Sauce,Jufran PH,Creamy Filipino-style peanut satay sauce,20,3.02,g,Sauces & Condiments,TRUE,admin
+71,Penne,Barilla Italy,Classic ridged penne rigate pasta,20,3.23,g,Dry Goods,TRUE,admin
+72,Pesto,Barilla Italy,Basil pesto with pine nuts and Parmesan,25,11.58,g,Sauces & Condiments,FALSE,admin
+73,Pesto Sauce,Barilla Italy,Ready-to-use traditional Genovese basil pesto,25,15.53,g,Sauces & Condiments,FALSE,admin
+74,Pork,Prime Cut Meats,"Premium pork loin or shoulder cuts, chilled",10,4.77,g,Pork Products,FALSE,admin
+75,Pork Belly,Prime Cut Meats,"Skin-on pork belly slab, chilled",100,94.12,g,Pork Products,FALSE,admin
+76,Pork Broth,Knorr Philippines,Rich slow-simmered pork bone broth concentrate,100,31.48,ml,Stocks & Broths,FALSE,admin
+77,Pork Filling,Prime Cut Meats,Seasoned ground pork filling for dumplings and buns,50,25.58,g,Pork Products,FALSE,admin
+78,Potato,Benguet Fresh Farms,"Locally grown Benguet potatoes, washed",5,2.56,g,Vegetables,FALSE,admin
+79,Rice,NFA/Dimasalang Rice,"Premium long-grain white rice, 5% brokens",10,5.84,g,Grains & Starches,FALSE,admin
+80,Salt,Asin Tibuok Heritage,"Fine sea salt, iodized and food-grade",20,18.8,g,Spices & Seasonings,FALSE,admin
+81,Sauce,UFC Philippines,"Versatile cooking sauce, sweet-savory blend",25,10.81,ml,Sauces & Condiments,FALSE,admin
+82,Seafood,SeaHarvest PH,"Assorted mixed seafood (squid, shrimp, clams)",50,32.53,g,Seafood,TRUE,admin
+83,Seafood Mix,SeaHarvest PH,IQF frozen seafood medley blend,5,3.51,g,Frozen Goods,TRUE,admin
+84,Sesame,Kadoya Japan,"Toasted sesame seeds, white and black blend",10,9.45,g,Spices & Seasonings,FALSE,admin
+85,Shrimp,SeaHarvest PH,"Fresh peeled and deveined shrimp, medium size",10,9.01,g,Seafood,TRUE,admin
+86,Soda,Coca-Cola PH,"Assorted carbonated soft drinks, 1.5L PET",20,6.9,ml,Beverages,FALSE,admin
+87,Soy Sauce,Datu Puti PH,Silver Swan-style naturally brewed soy sauce,100,28.32,ml,Sauces & Condiments,TRUE,admin
+88,Spices,La Pacita Spices,House-blend aromatic spice mix for marination,500,163,g,Spices & Seasonings,FALSE,admin
+89,Strawberries,Baguio Fresh Farms,"Fresh Baguio strawberries, hulled and washed",10,6.71,g,Fresh Fruits,FALSE,admin
+90,Sugar,San Carlos Milling,"Refined white cane sugar, food-grade",5,0.52,g,Sweeteners,FALSE,admin
+91,Syrup,Monin France,"Premium flavored syrups (vanilla, caramel, chocolate)",50,12.27,ml,Sweeteners,FALSE,admin
+92,Tamarind,NovaliCrop Farms,"Fresh tamarind pods, pulp-extracted",200,120.96,g,Local Ingredients,FALSE,admin
+93,Tamarind Mix,Knorr Philippines,Sinigang mix concentrate from tamarind base,20,11.82,g,Local Ingredients,FALSE,admin
+94,Teriyaki Sauce,Kikkoman Japan,Authentic Japanese teriyaki glaze sauce,20,9.74,ml,Asian Ingredients,FALSE,admin
+95,Tofu,Soylandia PH,"Firm silken tofu, locally produced and chilled",100,90.91,g,Plant-Based,FALSE,admin
+96,Tomato Sauce,Del Monte PH,Tomato sauce with Italian herbs blend,100,28.91,g,Canned Goods,FALSE,admin
+97,Tortilla,Mission Foods,"Flour tortilla wraps, 10-inch diameter",10,4.18,pcs,Bakery,FALSE,admin
+98,Tuna,Century Tuna PH,"Skipjack tuna loins, chilled or canned in brine",20,18.66,g,Seafood,TRUE,admin
+99,Ube,Kapuso Brand,"Purple yam (ube) halaya paste, sweetened",20,17.87,g,Local Ingredients,FALSE,admin
+100,Unagi,Yamasa Japan,"Grilled freshwater eel with kabayaki glaze, frozen",100,80.41,g,Seafood,TRUE,admin
+101,Vegetables,Benguet Fresh Farms,"Seasonal mixed vegetables, freshly harvested",25,8.5,g,Vegetables,FALSE,admin
+102,Vinegar,Datu Puti PH,"Sugarcane or coconut vinegar, naturally fermented",10,4.44,ml,Sauces & Condiments,FALSE,admin
+103,Wrapper,Wing Yip Asia,"Spring roll wrappers, thin and crispy type",25,6.99,pcs,Asian Ingredients,TRUE,admin
+104,Yakiniku Sauce,Ebara Foods Japan,Japanese BBQ yakiniku tare dipping sauce,100,37.47,ml,Asian Ingredients,FALSE,admin
