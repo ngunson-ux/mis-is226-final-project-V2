@@ -39,6 +39,14 @@ $routes->get('transactions', 'Transactions::index');
 
 /*
 |--------------------------------------------------------------------------
+| CUSTOMER DEMOGRAPHICS REPORT (Non-API Routes)
+|--------------------------------------------------------------------------
+*/
+$routes->get('report-customer-demographics', 'ReportCustomerDemographics::index');
+$routes->get('report-customer-demographics/export-csv', 'ReportCustomerDemographics::exportCsv');
+
+/*
+|--------------------------------------------------------------------------
 | API ROUTES
 |--------------------------------------------------------------------------
 */
@@ -87,15 +95,10 @@ $routes->group('api', function($routes) {
 
     $routes->get('report/brand/(:num)/sales-performance/', 'Api\SalesPerformanceReport::getIndex/$1');
 
-	// CUSTOMER DEMOGRAPHICS
-	$routes->get('report-customer-demographics', 'ReportCustomerDemographics::index');
-	$routes->get('report-customer-demographics/export-csv', 'ReportCustomerDemographics::exportCsv');
-	$routes->get('report-customer-demographics/export-age-distribution', 'ReportCustomerDemographics::exportAgeDistribution');
-	$routes->get('report-customer-demographics/export-gender-distribution', 'ReportCustomerDemographics::exportGenderDistribution');
-	$routes->get('report-customer-demographics/api', 'ReportCustomerDemographics::api');
-
-
-
+    // CUSTOMER DEMOGRAPHICS API
+    $routes->get('report-customer-demographics/export-age-distribution', 'ReportCustomerDemographics::exportAgeDistribution');
+    $routes->get('report-customer-demographics/export-gender-distribution', 'ReportCustomerDemographics::exportGenderDistribution');
+    $routes->get('report-customer-demographics/api', 'ReportCustomerDemographics::api');
 
 });
 
@@ -105,6 +108,4 @@ $routes->get('manage-rider-payment', 'ManageRiderPayment::getIndex');
 $routes->get('delivery-management', 'DeliveryManagement::getIndex');
 $routes->get('report-best-seller', 'ReportBestSeller::getIndex');
 $routes->get('report-sales-performance', 'ReportSalesPerformance::getIndex');
-
-
-
+$routes->get('report-customer-demographics', 'ReportCustomerDemographics::index');
