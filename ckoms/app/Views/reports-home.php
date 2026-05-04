@@ -65,7 +65,7 @@
                 <div class="col" style="width: 20rem;">
                     <div class="card h-100">
                         <div class="card-body text-center">
-                            <form action="#" method="get">
+                            <form action="<?= base_url('report-customer-demographics') ?>" method="get">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="bi bi-people" style="font-size: 3rem;"></i>
                                 </button>

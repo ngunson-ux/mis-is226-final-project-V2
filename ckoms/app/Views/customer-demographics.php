@@ -6,10 +6,10 @@
             <h5>Filter by Date Range</h5>
             <div class="row g-2">
                 <div class="col">
-                    <input id="startDate" type="date" class="form-control" placeholder="Start Date">
+                    <input id="startDate" type="date" class="form-control">
                 </div>
                 <div class="col">
-                    <input id="endDate" type="date" class="form-control" placeholder="End Date">
+                    <input id="endDate" type="date" class="form-control">
                 </div>
                 <div class="col">
                     <button class="btn btn-primary" onclick="filterDemographics()">Filter</button>
@@ -27,6 +27,7 @@
                     <tr>
                         <th>Customer ID</th>
                         <th>Name</th>
+                        <th>Gender</th>
                         <th>Age</th>
                         <th>City</th>
                         <th>Orders</th>
@@ -36,9 +37,7 @@
                     </tr>
                 </thead>
                 <tbody id="demographicsTableBody">
-                    <tr>
-                        <td colspan="8" class="text-center">Loading...</td>
-                    </tr>
+                    <tr><td colspan="9" class="text-center">Loading...</td></tr>
                 </tbody>
             </table>
         </div>
@@ -61,7 +60,7 @@ function loadAllDemographics() {
         .catch(error => {
             console.error("Error:", error);
             document.getElementById("demographicsTableBody").innerHTML =
-                `<tr><td colspan="8" class="text-center text-danger">Error loading data</td></tr>`;
+                `<tr><td colspan="9" class="text-center text-danger">Error loading data: ${error}</td></tr>`;
         });
 }
 
@@ -70,7 +69,7 @@ function filterDemographics() {
     const endDate = document.getElementById("endDate").value;
 
     if (!startDate || !endDate) {
-        alert("Please select both start and end dates");
+        alert("Please select both dates");
         return;
     }
 
@@ -81,14 +80,14 @@ function filterDemographics() {
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Error loading filtered data");
+            alert("Error loading filtered data: " + error);
         });
 }
 
 function renderTable(data) {
     if (!data || data.length === 0) {
         document.getElementById("demographicsTableBody").innerHTML =
-            `<tr><td colspan="8" class="text-center">No data found</td></tr>`;
+            `<tr><td colspan="9" class="text-center">No data found</td></tr>`;
         return;
     }
 
@@ -98,10 +97,11 @@ function renderTable(data) {
             <tr>
                 <td>${item.customer_id}</td>
                 <td>${item.first_name} ${item.last_name}</td>
+                <td>${item.gender || 'N/A'}</td>
                 <td>${item.age || 'N/A'}</td>
                 <td>${item.city || 'N/A'}</td>
                 <td>${item.order_count || 0}</td>
-                <td>₱${parseFloat(item.total_spending).toFixed(2)}</td>
+                <td>₱${parseFloat(item.total_spending || 0).toFixed(2)}</td>
                 <td>₱${parseFloat(item.avg_order_value || 0).toFixed(2)}</td>
                 <td>${item.favorite_items || 'N/A'}</td>
             </tr>
