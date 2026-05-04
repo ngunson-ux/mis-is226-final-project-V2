@@ -30,6 +30,7 @@ class ReportCustomerDemographics extends BaseController
         $orderFrequency = $this->customerDemographicsModel->getOrderFrequencyAnalysis($year);
 
         $data = [
+            'pageTitle' => 'Customer Demographics Report',
             'title' => 'Customer Demographics Report',
             'year' => $year,
             'month' => $month,
@@ -59,8 +60,8 @@ class ReportCustomerDemographics extends BaseController
 
         foreach ($customerDemographics as $row) {
             $csv .= "{$row['customer_id']},\"{$row['first_name']}\",\"{$row['last_name']}\",\"{$row['email_address']}\",";
-            $csv .= "\"{$row['gender']}\",{$row['calculated_age']},\"{$row['city']}\",{$row['total_orders']},";
-            $csv .= "{$row['total_spending']},{$row['average_order_value']},\"{$row['last_order_date']}\"\n";
+            $csv .= "\"{$row['gender']}\",{$row['age']},\"{$row['city']}\",{$row['order_count']},";
+            $csv .= "{$row['total_spending']},{$row['avg_order_value']},\"{$row['last_order_date']}\"\n";
         }
 
         $filename = "customer_demographics_" . date('Y-m-d_H-i-s') . ".csv";

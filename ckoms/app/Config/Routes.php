@@ -96,10 +96,10 @@ $routes->group('api', function($routes) {
     $routes->get('report/brand/(:num)/sales-performance/', 'Api\SalesPerformanceReport::getIndex/$1');
 
     // CUSTOMER DEMOGRAPHICS API
-    $routes->get('api/customer-demographics-report', 'Api\CustomerDemographics::getReport');
-	$routes->get('api/customer-demographics-report/by-date-range', 'Api\CustomerDemographics::getByDateRange');
-	$routes->get('report-customer-demographics/export-age-distribution', 'ReportCustomerDemographics::exportAgeDistribution');
-	$routes->get('report-customer-demographics/export-gender-distribution', 'ReportCustomerDemographics::exportGenderDistribution');
+    $routes->get('customer-demographics-report', 'Api\CustomerDemographics::getReport');
+    $routes->get('customer-demographics-report/by-date-range', 'Api\CustomerDemographics::getByDateRange');
+    $routes->get('report-customer-demographics/export-age-distribution', 'ReportCustomerDemographics::exportAgeDistribution');
+    $routes->get('report-customer-demographics/export-gender-distribution', 'ReportCustomerDemographics::exportGenderDistribution');
 
 });
 

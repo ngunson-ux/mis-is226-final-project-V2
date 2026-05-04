@@ -69,7 +69,7 @@ function filterDemographics() {
     const endDate = document.getElementById("endDate").value;
 
     if (!startDate || !endDate) {
-        alert("Please select both dates");
+        alert("Please select both start and end dates");
         return;
     }
 
