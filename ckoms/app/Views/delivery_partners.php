@@ -93,9 +93,9 @@
     </div>
 
 </div>
-<?php $this->endSection() ?>
+<?= $this->endSection() ?>
 
-<?php $this->section('scripts') ?>
+<?= $this->section('endScript') ?>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     loadPartners();
@@ -162,7 +162,7 @@ function addPartner() {
         contact_number: contactNumber,
         vehicle_type: vehicleType || null,
         plate_number: plateNumber || null,
-        availability_status: "available",
+        availability_status: "Available",
         assigned_area: assignedArea || "Unknown",
         rating: 0.00,
         total_deliveries: 0
@@ -175,26 +175,25 @@ function addPartner() {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(result => {
+    .then(response => {
         if (!response.ok) {
-            console.error(result);
-            alert("Failed to add delivery partner");
-            return;
+            return response.json().then(err => { throw err; });
         }
-        
+        return response.json();
+    })
+    .then(result => {
+        alert("Delivery partner added successfully!");
         document.getElementById("firstName").value = "";
         document.getElementById("lastName").value = "";
         document.getElementById("contactNumber").value = "";
         document.getElementById("vehicleType").value = "";
         document.getElementById("plateNumber").value = "";
         document.getElementById("assignedArea").value = "";
-
         loadPartners();
     })
     .catch(error => {
         console.error("Add Error:", error);
-        alert("Error adding delivery partner");
+        alert("Error adding delivery partner: " + (error.message || JSON.stringify(error)));
     });
 }
 
@@ -212,7 +211,7 @@ function viewOrders(partnerId) {
                     content += `<tr>
                         <td>${order.sales_invoice_id}</td>
                         <td>${order.first_name} ${order.last_name}</td>
-                        <td>${order.total_amount}</td>
+                        <td>₱${order.total_amount}</td>
                         <td>${order.delivery_status || 'Pending'}</td>
                     </tr>`;
                 });
@@ -268,7 +267,8 @@ function deletePartner(partnerId) {
     })
     .then(response => response.json())
     .then(result => {
-        if (response.ok) {
+        if (result.message) {
+            alert("Delivery partner deleted successfully!");
             loadPartners();
         } else {
             alert("Failed to delete delivery partner");
@@ -280,4 +280,4 @@ function deletePartner(partnerId) {
     });
 }
 </script>
-<?php $this->endSection() ?>
+<?= $this->endSection() ?>
