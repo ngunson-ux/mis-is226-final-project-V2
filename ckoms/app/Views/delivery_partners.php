@@ -82,7 +82,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Customers Served</h5>
+                    <h5 class="modal-title">Order Items Detail</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -197,63 +197,136 @@ function addPartner() {
     });
 }
 
+/**
+ * ORDERS BUTTON - Delivery Booking Transaction
+ * Shows: Order ID, Assigned Area, Delivery Partner, Delivery Status
+ */
 function viewOrders(partnerId) {
     fetch(`/api/delivery-partner/${partnerId}/orders`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load orders');
+            }
+            return response.json();
+        })
         .then(data => {
-            let content = `<p><strong>Partner:</strong> ${data.delivery_partner.first_name} ${data.delivery_partner.last_name}</p>`;
+            let content = `
+                <div class="alert alert-info">
+                    <strong>Delivery Partner:</strong> ${data.delivery_partner.first_name} ${data.delivery_partner.last_name}
+                    <br><strong>Total Bookings:</strong> ${data.total_orders || 0}
+                </div>
+            `;
             
-            if (!data.orders || data.orders.length === 0) {
-                content += "<p>No orders assigned yet.</p>";
-            } else {
-                content += "<table class='table table-sm'><thead><tr><th>Order ID</th><th>Customer</th><th>Total Amount</th><th>Status</th></tr></thead><tbody>";
+            content += `<table class='table table-sm table-hover table-striped'>
+                <thead class='table-dark'>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Assigned Area</th>
+                        <th>Delivery Partner</th>
+                        <th>Delivery Status</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+            
+            if (data.orders && data.orders.length > 0) {
                 data.orders.forEach(order => {
                     content += `<tr>
-                        <td>${order.sales_invoice_id}</td>
-                        <td>${order.first_name} ${order.last_name}</td>
-                        <td>₱${order.total_amount}</td>
-                        <td>${order.delivery_status || 'Pending'}</td>
+                        <td><strong>${order.sales_invoice_id || 'N/A'}</strong></td>
+                        <td>${order.assigned_area || 'N/A'}</td>
+                        <td>${data.delivery_partner.first_name} ${data.delivery_partner.last_name}</td>
+                        <td><span class="badge bg-info">${order.delivery_status || 'Pending'}</span></td>
                     </tr>`;
                 });
-                content += "</tbody></table>";
+            } else {
+                content += `<tr><td colspan="4" class="text-center text-muted">No orders assigned yet</td></tr>`;
             }
+            
+            content += `</tbody></table>`;
             
             document.getElementById("ordersContent").innerHTML = content;
             new bootstrap.Modal(document.getElementById('ordersModal')).show();
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Error loading orders");
+            document.getElementById("ordersContent").innerHTML = 
+                `<div class="alert alert-danger">Error loading orders: ${error.message}</div>`;
+            new bootstrap.Modal(document.getElementById('ordersModal')).show();
         });
 }
 
+/**
+ * CUSTOMERS BUTTON - Order Line Items Detail
+ * Shows: Menu Item, Quantity, Item Price, Subtotal
+ */
 function viewCustomers(partnerId) {
-    fetch(`/api/delivery-partner/${partnerId}/customers`)
-        .then(response => response.json())
-        .then(data => {
-            let content = `<p><strong>Partner:</strong> ${data.delivery_partner.first_name} ${data.delivery_partner.last_name}</p>`;
-            
-            if (!data.customers_served || data.customers_served.length === 0) {
-                content += "<p>No customers served yet.</p>";
-            } else {
-                content += "<table class='table table-sm'><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>City</th></tr></thead><tbody>";
-                data.customers_served.forEach(customer => {
-                    content += `<tr>
-                        <td>${customer.customer_id}</td>
-                        <td>${customer.first_name} ${customer.last_name}</td>
-                        <td>${customer.email_address}</td>
-                        <td>${customer.city || 'N/A'}</td>
-                    </tr>`;
-                });
-                content += "</tbody></table>";
+    fetch(`/api/delivery-partner/${partnerId}/orders`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load order items');
             }
+            return response.json();
+        })
+        .then(data => {
+            let content = `
+                <div class="alert alert-success">
+                    <strong>Delivery Partner:</strong> ${data.delivery_partner.first_name} ${data.delivery_partner.last_name}
+                    <br><strong>Order Items for Tracking</strong>
+                </div>
+            `;
+            
+            content += `<table class='table table-sm table-hover table-striped'>
+                <thead class='table-dark'>
+                    <tr>
+                        <th>Menu Item</th>
+                        <th>Quantity</th>
+                        <th>Item Price (₱)</th>
+                        <th>Subtotal (₱)</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+            
+            let hasItems = false;
+            if (data.orders && data.orders.length > 0) {
+                data.orders.forEach(order => {
+                    if (order.ordered_items && order.ordered_items !== 'N/A') {
+                        hasItems = true;
+                        // Parse the ordered_items string: "Item1 (x2 @ ₱100), Item2 (x1 @ ₱150)"
+                        const items = order.ordered_items.split('), ');
+                        items.forEach(item => {
+                            // Extract item name, quantity, and price
+                            const match = item.match(/^(.*?)\s*\(x(\d+)\s*@\s*₱([\d.]+)\)/);
+                            if (match) {
+                                const itemName = match[1];
+                                const quantity = match[2];
+                                const price = parseFloat(match[3]);
+                                const subtotal = (quantity * price).toFixed(2);
+                                
+                                content += `<tr>
+                                    <td>${itemName}</td>
+                                    <td>${quantity}</td>
+                                    <td>₱${price.toFixed(2)}</td>
+                                    <td><strong>₱${subtotal}</strong></td>
+                                </tr>`;
+                            }
+                        });
+                    }
+                });
+            }
+            
+            if (!hasItems) {
+                content += `<tr><td colspan="4" class="text-center text-muted">No order items to display</td></tr>`;
+            }
+            
+            content += `</tbody></table>`;
             
             document.getElementById("customersContent").innerHTML = content;
             new bootstrap.Modal(document.getElementById('customersModal')).show();
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Error loading customers");
+            document.getElementById("customersContent").innerHTML = 
+                `<div class="alert alert-danger">Error loading order items: ${error.message}</div>`;
+            new bootstrap.Modal(document.getElementById('customersModal')).show();
         });
 }
 
@@ -265,18 +338,19 @@ function deletePartner(partnerId) {
     fetch(`/api/delivery-partner/${partnerId}`, {
         method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(result => {
-        if (result.message) {
-            alert("Delivery partner deleted successfully!");
-            loadPartners();
-        } else {
-            alert("Failed to delete delivery partner");
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete');
         }
+        return response.json();
+    })
+    .then(result => {
+        alert("Delivery partner deleted successfully!");
+        loadPartners();
     })
     .catch(error => {
         console.error("Delete Error:", error);
-        alert("Error deleting delivery partner");
+        alert("Error deleting delivery partner: " + error.message);
     });
 }
 </script>

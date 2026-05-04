@@ -11,20 +11,24 @@ class CreateDeliveryBookingTable extends Migration
         $this->forge->addField([
             'delivery_booking_id' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 10,
+                'constraint'     => 30,
                 'primary'        => true,
             ],
             'sales_invoice_id' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 20,
+                'null'           => false,
             ],
             'delivery_partner_id' => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 10,
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'null'           => false,
             ],
             'assigned_area' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 100,
+                'null'           => true,
             ],
             'delivery_status' => [
                 'type'           => 'VARCHAR',
@@ -50,7 +54,9 @@ class CreateDeliveryBookingTable extends Migration
                 'null'           => true,
             ],
         ]);
-        $this->forge->addForeignKey('sales_invoice_id', 'sales_invoices', 'sales_invoice_id', '', 'CASCADE');
+        
+        // KEY CHANGE: Changed from 'sales_invoices' to 'sales_invoice' (singular)
+        $this->forge->addForeignKey('sales_invoice_id', 'sales_invoice', 'sales_invoice_id', '', 'CASCADE');
         $this->forge->addForeignKey('delivery_partner_id', 'delivery_partners', 'delivery_partner_id', '', 'CASCADE');
         $this->forge->createTable('delivery_bookings');
     }

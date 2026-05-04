@@ -30,7 +30,7 @@ class DeliveryPartnerModel extends Model
     protected $updatedField  = 'date_updated';
 
     /**
-     * Get a delivery partner with their assigned orders
+     * Get a delivery partner with their assigned orders and order details
      */
     public function getPartnerWithOrders($partnerId)
     {
@@ -43,23 +43,37 @@ class DeliveryPartnerModel extends Model
         $db = \Config\Database::connect();
         
         // Query to get orders assigned to this delivery partner
+        // Including order line items for detailed tracking
         $orders = $db->table('delivery_bookings db')
             ->select('
+                db.delivery_booking_id,
                 si.sales_invoice_id,
+                si.order_date,
                 c.first_name,
                 c.last_name,
+                c.email_address,
                 si.total_amount,
-                db.delivery_status
+                si.delivery_address,
+                db.delivery_status,
+                db.assigned_area,
+                GROUP_CONCAT(
+                    CONCAT(mi.item_name, " (x", ol.quantity, " @ ₱", ol.item_price, ")") 
+                    SEPARATOR ", "
+                ) as ordered_items
             ')
-            ->join('sales_invoices si', 'db.sales_invoice_id = si.sales_invoice_id')
-            ->join('customers c', 'si.customer_id = c.customer_id')
+            ->join('sales_invoice si', 'db.sales_invoice_id = si.sales_invoice_id', 'left')
+            ->join('customers c', 'si.customer_id = c.customer_id', 'left')
+            ->join('order_line ol', 'si.sales_invoice_id = ol.sales_invoice_id', 'left')
+            ->join('menu_items mi', 'ol.menu_item_id = mi.menu_item_id', 'left')
             ->where('db.delivery_partner_id', $partnerId)
+            ->groupBy('si.sales_invoice_id')
             ->get()
             ->getResultArray();
 
         return [
             'delivery_partner' => $partner,
-            'orders' => $orders
+            'orders' => $orders,
+            'total_orders' => count($orders)
         ];
     }
 
@@ -84,17 +98,22 @@ class DeliveryPartnerModel extends Model
                 c.first_name,
                 c.last_name,
                 c.email_address,
-                c.city
+                c.mobile_number,
+                c.city,
+                c.province,
+                COUNT(DISTINCT si.sales_invoice_id) as total_orders_from_customer
             ')
-            ->join('sales_invoices si', 'db.sales_invoice_id = si.sales_invoice_id')
-            ->join('customers c', 'si.customer_id = c.customer_id')
+            ->join('sales_invoice si', 'db.sales_invoice_id = si.sales_invoice_id', 'left')
+            ->join('customers c', 'si.customer_id = c.customer_id', 'left')
             ->where('db.delivery_partner_id', $partnerId)
+            ->groupBy('c.customer_id')
             ->get()
             ->getResultArray();
 
         return [
             'delivery_partner' => $partner,
-            'customers_served' => $customers
+            'customers_served' => $customers,
+            'total_customers' => count($customers)
         ];
     }
 
